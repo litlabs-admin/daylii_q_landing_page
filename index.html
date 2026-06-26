@@ -29,68 +29,96 @@
 </head>
 <body class="aud-retailer">
 
-<a class="btn btn-pri visually-hidden" href="#top">Skip to content</a>
+<a class="skip" href="#top">Skip to content</a>
+
+<!-- ===== icon sprite (Lucide-style stroke set) ===== -->
+<svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.3 11.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-3 7.7-7 9-4-1.3-7-4.4-7-9V6z"/><path d="M9 12l2 2 4-4.2"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 4v5h-5"/></symbol>
+  <symbol id="i-badge" viewBox="0 0 24 24"><path d="M12 3l2 1.4 2.4-.3 1 2.2 2.2 1-.3 2.4L21 12l-1.7 1.9.3 2.4-2.2 1-1 2.2-2.4-.3L12 21l-2-1.4-2.4.3-1-2.2-2.2-1 .3-2.4L3 12l1.7-1.9-.3-2.4 2.2-1 1-2.2 2.4.3z"/><path d="M9 12l2 2 4-4.2"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 11.5V4h7.5L21 14.5 14.5 21 3 11.5z"/><circle cx="7.5" cy="7.5" r="1.3"/></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><path d="M9 4H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="3.4" rx="1"/><path d="M9 13l2 2 4-4.2"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M3.5 14a8.5 8.5 0 0 1 17 0"/><path d="M12 14l4.2-3.2"/><circle cx="12" cy="14" r="1.2"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 3L5 13.5h6l-1 7.5L19 10.5h-6z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></symbol>
+</defs></svg>
 
 <!-- NAV -->
-<header class="nav"><div class="wrap nav-in">
-  <a href="#top" aria-label="dayliiIQ home"><img src="assets/daylii_logo.png" width="112" height="24" alt="dayliiIQ"></a>
+<header class="nav" id="nav"><div class="wrap nav-in">
+  <a class="nav-logo" href="#top" aria-label="dayliiIQ home"><img src="assets/daylii_logo.png" width="112" height="24" alt="dayliiIQ"></a>
   <nav class="nav-links" aria-label="Primary">
     <a href="#how">How it works</a>
     <a href="#value">Who it's for</a>
     <a href="#proof">Proof</a>
-    <a class="btn btn-pri" href="#demo">Book a demo</a>
+    <a class="btn btn-pri" href="#demo">Book a demo <svg class="ic"><use href="#i-arrow"/></svg></a>
   </nav>
 </div></header>
 
 <!-- HERO -->
-<section class="hero" id="top"><div class="wrap hero-in">
+<section class="hero" id="top">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap hero-in">
   <div class="hero-copy">
-    <span class="eyebrow">FSA / HSA · Medicare OTC · Eligibility engine</span>
-    <h1>The eligibility layer<br><span class="b">for FSA &amp; HSA commerce.</span></h1>
-    <p class="lede">dayliiIQ classifies <b>every SKU</b> — eligible, ineligible, or letter-of-medical-necessity — each with an <b>IRS §213(d) citation</b>, a confidence score, and plain-English reasoning. Always current. Built to hold up in an audit.</p>
+    <span class="eyebrow reveal"><span class="eyebrow-dot"></span>FSA / HSA · Medicare OTC · Eligibility engine</span>
+    <h1 class="reveal" style="--d:.04s">The eligibility layer<br><span class="b">for FSA &amp; HSA commerce.</span></h1>
+    <p class="lede reveal" style="--d:.1s">dayliiIQ classifies <b>every SKU</b> — eligible, ineligible, or letter-of-medical-necessity — each with an <b>IRS §213(d) citation</b>, a confidence score, and plain-English reasoning. Always current. Built to hold up in an audit.</p>
 
-    <div class="seg" role="tablist" aria-label="Choose audience">
+    <div class="seg reveal" style="--d:.16s" role="tablist" aria-label="Choose audience">
+      <span class="seg-thumb" aria-hidden="true"></span>
       <button class="on" data-aud="retailer" role="tab" aria-selected="true">I'm a retailer</button>
       <button data-aud="manufacturer" role="tab" aria-selected="false">I'm a manufacturer</button>
     </div>
-    <div class="aud-line ret">For retailers: <span class="k">recover the eligible basket</span> and stand up to the audit.</div>
+    <div class="aud-line ret reveal" style="--d:.2s">For retailers: <span class="k">recover the eligible basket</span> and stand up to the audit.</div>
     <div class="aud-line mfr" style="display:none">For manufacturers: <span class="k">unlock the FSA/HSA dollars</span> your catalog is leaving behind.</div>
 
-    <div class="hero-cta">
-      <a class="btn btn-pri" href="#demo">Book a demo</a>
+    <div class="hero-cta reveal" style="--d:.26s">
+      <a class="btn btn-pri" href="#demo">Book a demo <svg class="ic"><use href="#i-arrow"/></svg></a>
       <a class="btn btn-ghost" href="#how">See how it works</a>
     </div>
   </div>
 
   <!-- signature: live determination card -->
-  <div class="dc" aria-label="Example SKU eligibility determinations">
+  <div class="dc reveal" style="--d:.18s" aria-label="Example SKU eligibility determinations">
     <div class="dc-scan"></div>
     <div class="dc-h">
       <div class="dcw">daylii<i>IQ</i></div>
       <div class="dctag">SKU Eligibility · Live determination</div>
     </div>
-    <div class="dc-row">
+    <div class="dc-status"><span class="dc-live"><span class="dc-pulse"></span>Live</span><span class="dc-count">4 / 4 resolved</span></div>
+    <div class="dc-rows">
+    <div class="dc-row" style="--i:1">
       <div class="dc-top"><span class="dc-prod">Flonase Allergy Relief 24HR</span><span class="pill go">Eligible</span></div>
-      <div class="dc-meta">IRS §213(d) · CARES Act · <span class="conf">confidence 0.98</span></div>
+      <div class="dc-meta">IRS §213(d) · CARES Act</div>
+      <div class="dc-conf"><div class="dc-track"><div class="dc-bar go" style="--c:98%"></div></div><span class="dc-pct">0.98</span></div>
     </div>
-    <div class="dc-row">
+    <div class="dc-row" style="--i:2">
       <div class="dc-top"><span class="dc-prod">Neutrogena Sunscreen SPF 50</span><span class="pill go">Eligible</span></div>
-      <div class="dc-meta">IRS §213(d) · SPF 15+ sun care · <span class="conf">confidence 0.96</span></div>
+      <div class="dc-meta">IRS §213(d) · SPF 15+ sun care</div>
+      <div class="dc-conf"><div class="dc-track"><div class="dc-bar go" style="--c:96%"></div></div><span class="dc-pct">0.96</span></div>
     </div>
-    <div class="dc-row">
+    <div class="dc-row" style="--i:3">
       <div class="dc-top"><span class="dc-prod">Benefiber Fiber Powder</span><span class="pill lmn">LMN required</span></div>
-      <div class="dc-meta">IRS §213(d) · dietary supplement · <span class="conf">confidence 0.71</span></div>
+      <div class="dc-meta">IRS §213(d) · dietary supplement</div>
+      <div class="dc-conf"><div class="dc-track"><div class="dc-bar lmn" style="--c:71%"></div></div><span class="dc-pct">0.71</span></div>
     </div>
-    <div class="dc-row">
+    <div class="dc-row" style="--i:4">
       <div class="dc-top"><span class="dc-prod">Sensodyne Pronamel Toothpaste</span><span class="pill no">Ineligible</span></div>
-      <div class="dc-meta">general health · not medically necessary · <span class="conf">confidence 0.93</span></div>
+      <div class="dc-meta">general health · not medically necessary</div>
+      <div class="dc-conf"><div class="dc-track"><div class="dc-bar no" style="--c:93%"></div></div><span class="dc-pct">0.93</span></div>
+    </div>
     </div>
   </div>
 </div></section>
 
 <!-- REGS STRIP -->
 <div class="regs"><div class="wrap regs-in">
-  <span class="lab">Grounded in</span>
+  <span class="lab"><svg class="ic"><use href="#i-shield"/></svg>Grounded in</span>
   <span class="item">IRS §213(d)</span><span class="dot">·</span>
   <span class="item">CARES Act §3702</span><span class="dot">·</span>
   <span class="item">CMS MCM Ch. 4</span><span class="dot">·</span>
@@ -101,75 +129,82 @@
 <section class="sec val" id="value"><div class="wrap">
   <!-- retailer -->
   <div class="aud-block ret">
-    <span class="eyebrow sec-eye">For retailers</span>
-    <h2>Recover the eligible basket.<br><span class="b">Stand up to the audit.</span></h2>
-    <p class="intro">Every FSA/HSA-eligible SKU wrongly declined at checkout is a sale you've already lost — and every over-claim is audit exposure. dayliiIQ closes both gaps.</p>
+    <span class="eyebrow sec-eye reveal">For retailers</span>
+    <h2 class="reveal" style="--d:.04s">Recover the eligible basket.<br><span class="b">Stand up to the audit.</span></h2>
+    <p class="intro reveal" style="--d:.08s">Every FSA/HSA-eligible SKU wrongly declined at checkout is a sale you've already lost — and every over-claim is audit exposure. dayliiIQ closes both gaps.</p>
     <div class="vgrid">
-      <div class="vcard"><div class="vn">Lost sales</div><h3>Stop declining eligible items</h3><p>Eligible SKUs that get rejected at checkout are revenue walking out the door. dayliiIQ flags every one so the eligible basket actually converts.</p></div>
-      <div class="vcard"><div class="vn">Audit risk</div><h3>Make every verdict defensible</h3><p>Over-claims become liability under audit. Each determination is tied to an IRS citation, scored, and reasoned — a record that holds up.</p></div>
-      <div class="vcard"><div class="vn">Operations</div><h3>Retire the manual layer</h3><p>Replace static SIGIS lists, spreadsheets, and outside consultants with one engine that re-grades itself as the rules move.</p></div>
+      <div class="vcard reveal" style="--d:.04s"><div class="vicon"><svg class="ic"><use href="#i-cart"/></svg></div><div class="vn">Lost sales</div><h3>Stop declining eligible items</h3><p>Eligible SKUs that get rejected at checkout are revenue walking out the door. dayliiIQ flags every one so the eligible basket actually converts.</p></div>
+      <div class="vcard reveal" style="--d:.12s"><div class="vicon"><svg class="ic"><use href="#i-shield"/></svg></div><div class="vn">Audit risk</div><h3>Make every verdict defensible</h3><p>Over-claims become liability under audit. Each determination is tied to an IRS citation, scored, and reasoned — a record that holds up.</p></div>
+      <div class="vcard reveal" style="--d:.2s"><div class="vicon"><svg class="ic"><use href="#i-refresh"/></svg></div><div class="vn">Operations</div><h3>Retire the manual layer</h3><p>Replace static SIGIS lists, spreadsheets, and outside consultants with one engine that re-grades itself as the rules move.</p></div>
     </div>
   </div>
   <!-- manufacturer -->
   <div class="aud-block mfr">
-    <span class="eyebrow sec-eye" style="color:var(--go)">For manufacturers</span>
-    <h2>Unlock the FSA/HSA dollars<br><span class="b mfrc">your catalog is missing.</span></h2>
-    <p class="intro">Your eligible products only sell on tax-advantaged dollars if they're recognized as eligible. Most brands leave that money on the table. dayliiIQ changes that — SKU by SKU.</p>
+    <span class="eyebrow sec-eye reveal" style="color:var(--go)">For manufacturers</span>
+    <h2 class="reveal" style="--d:.04s">Unlock the FSA/HSA dollars<br><span class="b mfrc">your catalog is missing.</span></h2>
+    <p class="intro reveal" style="--d:.08s">Your eligible products only sell on tax-advantaged dollars if they're recognized as eligible. Most brands leave that money on the table. dayliiIQ changes that — SKU by SKU.</p>
     <div class="vgrid">
-      <div class="vcard"><div class="vn">Recognition</div><h3>Get certified eligible</h3><p>We classify your catalog so eligible products are recognized at checkout and on FSA/HSA marketplaces — not silently declined.</p></div>
-      <div class="vcard"><div class="vn">Whitespace</div><h3>Open untapped categories</h3><p>Period care, sun care, acne, postpartum, compression, diagnostics — categories full of eligible SKUs most brands never claim.</p></div>
-      <div class="vcard"><div class="vn">Commercials</div><h3>Pay per unlocked SKU</h3><p>You only pay for the SKUs we move into eligible. No platform fee to start — aligned to the catalog we actually open up.</p></div>
+      <div class="vcard reveal" style="--d:.04s"><div class="vicon"><svg class="ic"><use href="#i-badge"/></svg></div><div class="vn">Recognition</div><h3>Get certified eligible</h3><p>We classify your catalog so eligible products are recognized at checkout and on FSA/HSA marketplaces — not silently declined.</p></div>
+      <div class="vcard reveal" style="--d:.12s"><div class="vicon"><svg class="ic"><use href="#i-layers"/></svg></div><div class="vn">Whitespace</div><h3>Open untapped categories</h3><p>Period care, sun care, acne, postpartum, compression, diagnostics — categories full of eligible SKUs most brands never claim.</p></div>
+      <div class="vcard reveal" style="--d:.2s"><div class="vicon"><svg class="ic"><use href="#i-tag"/></svg></div><div class="vn">Commercials</div><h3>Pay per unlocked SKU</h3><p>You only pay for the SKUs we move into eligible. No platform fee to start — aligned to the catalog we actually open up.</p></div>
     </div>
   </div>
 </div></section>
 
 <!-- HOW IT WORKS -->
 <section class="sec how" id="how"><div class="wrap">
-  <span class="eyebrow sec-eye">How it works</span>
-  <h2>Catalog in. <span class="b">Cited eligibility out.</span></h2>
-  <p class="intro">A low-lift, file-based flow — you send the catalog, we return a determination for every SKU. No API required to get value; an optional read-only API adds live per-SKU lookups at checkout.</p>
+  <span class="eyebrow sec-eye reveal">How it works</span>
+  <h2 class="reveal" style="--d:.04s">Catalog in. <span class="b">Cited eligibility out.</span></h2>
+  <p class="intro reveal" style="--d:.08s">A low-lift, file-based flow — you send the catalog, we return a determination for every SKU. No API required to get value; an optional read-only API adds live per-SKU lookups at checkout.</p>
   <div class="steps">
-    <div class="step"><div class="num">01 · Determine</div><h3>Run the catalog</h3><p>A cited verdict per SKU — eligible, ineligible, or LMN — sets the baseline, with confidence and reasoning on every line.</p></div>
-    <div class="step"><div class="num">02 · Keep current</div><h3>Re-grade as rules move</h3><p>Continuous re-grading as IRS, CARES, FDA, and CMS guidance changes. The layer never goes stale.</p></div>
-    <div class="step"><div class="num">03 · Audit</div><h3>Export the record</h3><p>Every SKU carries a verdict, citation, confidence, and reasoning — one clean record per item, ready for an auditor.</p></div>
+    <div class="step reveal" style="--d:.04s"><div class="step-h"><span class="step-ic"><svg class="ic"><use href="#i-scan"/></svg></span><span class="num">01 · Determine</span></div><h3>Run the catalog</h3><p>A cited verdict per SKU — eligible, ineligible, or LMN — sets the baseline, with confidence and reasoning on every line.</p></div>
+    <div class="step reveal" style="--d:.12s"><div class="step-h"><span class="step-ic"><svg class="ic"><use href="#i-refresh"/></svg></span><span class="num">02 · Keep current</span></div><h3>Re-grade as rules move</h3><p>Continuous re-grading as IRS, CARES, FDA, and CMS guidance changes. The layer never goes stale.</p></div>
+    <div class="step reveal" style="--d:.2s"><div class="step-h"><span class="step-ic"><svg class="ic"><use href="#i-clipboard"/></svg></span><span class="num">03 · Audit</span></div><h3>Export the record</h3><p>Every SKU carries a verdict, citation, confidence, and reasoning — one clean record per item, ready for an auditor.</p></div>
   </div>
 </div></section>
 
 <!-- PROOF -->
 <section class="proof" id="proof"><div class="wrap proof-in">
-  <span class="plab">Proof point</span>
-  <h2>In a pilot with a top US pharmacy retailer, dayliiIQ found <em>money on both sides of the ledger.</em></h2>
+  <span class="plab reveal">Proof point</span>
+  <h2 class="reveal" style="--d:.04s">In a pilot with a top US pharmacy retailer, dayliiIQ found <em>money on both sides of the ledger.</em></h2>
   <div class="pstats">
-    <div class="pstat"><div class="big">4,114</div><div class="cap">SKUs analyzed against the retailer's own eligibility tags</div></div>
-    <div class="pstat"><div class="big">44%</div><div class="cap">classified FSA/HSA-eligible across the sample</div></div>
-    <div class="pstat"><div class="big">78</div><div class="cap">discrepancies surfaced vs. the retailer's existing tags</div></div>
+    <div class="pstat reveal" style="--d:.04s"><div class="big" data-count="4114">4,114</div><div class="cap">SKUs analyzed against the retailer's own eligibility tags</div></div>
+    <div class="pstat reveal" style="--d:.12s"><div class="big" data-count="44" data-suffix="%">44%</div><div class="cap">classified FSA/HSA-eligible across the sample</div></div>
+    <div class="pstat reveal" style="--d:.2s"><div class="big" data-count="78">78</div><div class="cap">discrepancies surfaced vs. the retailer's existing tags</div></div>
   </div>
-  <p class="pnote">Of those 78: 51 eligible items were under-flagged — recoverable sales — and 27 were over-claims that carried audit risk. Every flag arrived with its citation, confidence, and reasoning attached.</p>
+  <div class="pledger reveal" style="--d:.1s" aria-hidden="true">
+    <div class="pledger-bar"><span class="pledger-under" style="--w:65.4%"></span><span class="pledger-over" style="--w:34.6%"></span></div>
+    <div class="pledger-key">
+      <span><i class="dotg"></i>51 under-flagged — recoverable sales</span>
+      <span><i class="dotr"></i>27 over-claims — audit risk</span>
+    </div>
+  </div>
+  <p class="pnote reveal">Of those 78: 51 eligible items were under-flagged — recoverable sales — and 27 were over-claims that carried audit risk. Every flag arrived with its citation, confidence, and reasoning attached.</p>
 </div></section>
 
 <!-- WHY -->
 <section class="sec why" id="why"><div class="wrap">
-  <span class="eyebrow sec-eye">Why dayliiIQ</span>
-  <h2>Not a list. <span class="b">A living eligibility engine.</span></h2>
+  <span class="eyebrow sec-eye reveal">Why dayliiIQ</span>
+  <h2 class="reveal" style="--d:.04s">Not a list. <span class="b">A living eligibility engine.</span></h2>
   <div class="wgrid">
-    <div class="wfeat"><h4>Cited to the rule</h4><p>Every verdict ties to IRS §213(d), the CARES Act, FDA monographs, or CMS guidance — never an opinion.</p></div>
-    <div class="wfeat"><h4>Always current</h4><p>Re-graded continuously as regulations and product data change, so the answer is right today.</p></div>
-    <div class="wfeat"><h4>Confidence + reasoning</h4><p>Not a black box: each SKU gets a confidence score and plain-English why.</p></div>
-    <div class="wfeat"><h4>Audit-ready</h4><p>One structured record per SKU — the same answer holds at the shelf, in adjudication, and in front of an auditor.</p></div>
-    <div class="wfeat"><h4>No PII</h4><p>Runs on catalog data only — never patient data — so security review stays light.</p></div>
-    <div class="wfeat"><h4>Low-lift to start</h4><p>Secure file transfer, no API required. Add a read-only lookup API only if you adjudicate live at checkout.</p></div>
+    <div class="wfeat reveal" style="--d:.03s"><span class="wic"><svg class="ic"><use href="#i-doc"/></svg></span><div><h4>Cited to the rule</h4><p>Every verdict ties to IRS §213(d), the CARES Act, FDA monographs, or CMS guidance — never an opinion.</p></div></div>
+    <div class="wfeat reveal" style="--d:.07s"><span class="wic"><svg class="ic"><use href="#i-refresh"/></svg></span><div><h4>Always current</h4><p>Re-graded continuously as regulations and product data change, so the answer is right today.</p></div></div>
+    <div class="wfeat reveal" style="--d:.11s"><span class="wic"><svg class="ic"><use href="#i-gauge"/></svg></span><div><h4>Confidence + reasoning</h4><p>Not a black box: each SKU gets a confidence score and plain-English why.</p></div></div>
+    <div class="wfeat reveal" style="--d:.15s"><span class="wic"><svg class="ic"><use href="#i-clipboard"/></svg></span><div><h4>Audit-ready</h4><p>One structured record per SKU — the same answer holds at the shelf, in adjudication, and in front of an auditor.</p></div></div>
+    <div class="wfeat reveal" style="--d:.19s"><span class="wic"><svg class="ic"><use href="#i-lock"/></svg></span><div><h4>No PII</h4><p>Runs on catalog data only — never patient data — so security review stays light.</p></div></div>
+    <div class="wfeat reveal" style="--d:.23s"><span class="wic"><svg class="ic"><use href="#i-zap"/></svg></span><div><h4>Low-lift to start</h4><p>Secure file transfer, no API required. Add a read-only lookup API only if you adjudicate live at checkout.</p></div></div>
   </div>
 </div></section>
 
 <!-- CTA -->
 <section class="sec cta" id="demo"><div class="wrap">
-  <div class="cta-box">
+  <div class="cta-box reveal">
     <div>
       <h2>See dayliiIQ run on your own catalog.</h2>
       <p>Send us a sample and we'll return cited determinations — eligible, ineligible, LMN — for every SKU, so you can see exactly what's recoverable and what's at risk.</p>
     </div>
     <div class="cta-actions">
-      <a class="btn btn-pri" href="https://cal.com/daylii/demo">Book a demo</a>
+      <a class="btn btn-lime" href="https://cal.com/daylii/demo">Book a demo <svg class="ic"><use href="#i-arrow"/></svg></a>
       <div class="em">or email <a href="mailto:hello@daylii.com">hello@daylii.com</a></div>
     </div>
   </div>
@@ -178,7 +213,7 @@
 <!-- FOOTER -->
 <footer class="ft"><div class="wrap">
   <div class="ft-in">
-    <div>
+    <div class="ft-brand">
       <img src="assets/daylii_logo.png" width="102" height="22" alt="dayliiIQ">
       <p class="tag">The cited, always-current eligibility engine for FSA/HSA and Medicare OTC commerce.</p>
     </div>
