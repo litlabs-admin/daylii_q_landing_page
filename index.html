@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dayliiIQ — the eligibility layer for FSA &amp; HSA commerce</title>
+<meta name="description" content="dayliiIQ classifies every SKU — eligible, ineligible, or letter-of-medical-necessity — each with an IRS §213(d) citation, a confidence score, and plain-English reasoning. The cited, always-current eligibility engine for FSA/HSA and Medicare OTC commerce.">
+<meta name="theme-color" content="#0b1733">
+<link rel="canonical" href="https://daylii.com/">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="dayliiIQ — the eligibility layer for FSA &amp; HSA commerce">
+<meta property="og:description" content="A cited, always-current eligibility engine: every SKU classified eligible, ineligible, or LMN — with an IRS §213(d) citation, confidence score, and plain-English reasoning.">
+<meta property="og:image" content="assets/daylii_logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="dayliiIQ — the eligibility layer for FSA &amp; HSA commerce">
+<meta name="twitter:description" content="The cited, always-current eligibility engine for FSA/HSA and Medicare OTC commerce.">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/daylii_logo.png">
+
+<!-- preload the two most-used fonts to avoid FOUT on the headline + body -->
+<link rel="preload" href="assets/fonts/geist-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-700.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/main.js" defer></script>
+</head>
+<body class="aud-retailer">
+
+<a class="btn btn-pri visually-hidden" href="#top">Skip to content</a>
+
+<!-- NAV -->
+<header class="nav"><div class="wrap nav-in">
+  <a href="#top" aria-label="dayliiIQ home"><img src="assets/daylii_logo.png" width="112" height="24" alt="dayliiIQ"></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#how">How it works</a>
+    <a href="#value">Who it's for</a>
+    <a href="#proof">Proof</a>
+    <a class="btn btn-pri" href="#demo">Book a demo</a>
+  </nav>
+</div></header>
+
+<!-- HERO -->
+<section class="hero" id="top"><div class="wrap hero-in">
+  <div class="hero-copy">
+    <span class="eyebrow">FSA / HSA · Medicare OTC · Eligibility engine</span>
+    <h1>The eligibility layer<br><span class="b">for FSA &amp; HSA commerce.</span></h1>
+    <p class="lede">dayliiIQ classifies <b>every SKU</b> — eligible, ineligible, or letter-of-medical-necessity — each with an <b>IRS §213(d) citation</b>, a confidence score, and plain-English reasoning. Always current. Built to hold up in an audit.</p>
+
+    <div class="seg" role="tablist" aria-label="Choose audience">
+      <button class="on" data-aud="retailer" role="tab" aria-selected="true">I'm a retailer</button>
+      <button data-aud="manufacturer" role="tab" aria-selected="false">I'm a manufacturer</button>
+    </div>
+    <div class="aud-line ret">For retailers: <span class="k">recover the eligible basket</span> and stand up to the audit.</div>
+    <div class="aud-line mfr" style="display:none">For manufacturers: <span class="k">unlock the FSA/HSA dollars</span> your catalog is leaving behind.</div>
+
+    <div class="hero-cta">
+      <a class="btn btn-pri" href="#demo">Book a demo</a>
+      <a class="btn btn-ghost" href="#how">See how it works</a>
+    </div>
+  </div>
+
+  <!-- signature: live determination card -->
+  <div class="dc" aria-label="Example SKU eligibility determinations">
+    <div class="dc-scan"></div>
+    <div class="dc-h">
+      <div class="dcw">daylii<i>IQ</i></div>
+      <div class="dctag">SKU Eligibility · Live determination</div>
+    </div>
+    <div class="dc-row">
+      <div class="dc-top"><span class="dc-prod">Flonase Allergy Relief 24HR</span><span class="pill go">Eligible</span></div>
+      <div class="dc-meta">IRS §213(d) · CARES Act · <span class="conf">confidence 0.98</span></div>
+    </div>
+    <div class="dc-row">
+      <div class="dc-top"><span class="dc-prod">Neutrogena Sunscreen SPF 50</span><span class="pill go">Eligible</span></div>
+      <div class="dc-meta">IRS §213(d) · SPF 15+ sun care · <span class="conf">confidence 0.96</span></div>
+    </div>
+    <div class="dc-row">
+      <div class="dc-top"><span class="dc-prod">Benefiber Fiber Powder</span><span class="pill lmn">LMN required</span></div>
+      <div class="dc-meta">IRS §213(d) · dietary supplement · <span class="conf">confidence 0.71</span></div>
+    </div>
+    <div class="dc-row">
+      <div class="dc-top"><span class="dc-prod">Sensodyne Pronamel Toothpaste</span><span class="pill no">Ineligible</span></div>
+      <div class="dc-meta">general health · not medically necessary · <span class="conf">confidence 0.93</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- REGS STRIP -->
+<div class="regs"><div class="wrap regs-in">
+  <span class="lab">Grounded in</span>
+  <span class="item">IRS §213(d)</span><span class="dot">·</span>
+  <span class="item">CARES Act §3702</span><span class="dot">·</span>
+  <span class="item">CMS MCM Ch. 4</span><span class="dot">·</span>
+  <span class="item">SIGIS / IIAS standards</span>
+</div></div>
+
+<!-- VALUE (toggled) -->
+<section class="sec val" id="value"><div class="wrap">
+  <!-- retailer -->
+  <div class="aud-block ret">
+    <span class="eyebrow sec-eye">For retailers</span>
+    <h2>Recover the eligible basket.<br><span class="b">Stand up to the audit.</span></h2>
+    <p class="intro">Every FSA/HSA-eligible SKU wrongly declined at checkout is a sale you've already lost — and every over-claim is audit exposure. dayliiIQ closes both gaps.</p>
+    <div class="vgrid">
+      <div class="vcard"><div class="vn">Lost sales</div><h3>Stop declining eligible items</h3><p>Eligible SKUs that get rejected at checkout are revenue walking out the door. dayliiIQ flags every one so the eligible basket actually converts.</p></div>
+      <div class="vcard"><div class="vn">Audit risk</div><h3>Make every verdict defensible</h3><p>Over-claims become liability under audit. Each determination is tied to an IRS citation, scored, and reasoned — a record that holds up.</p></div>
+      <div class="vcard"><div class="vn">Operations</div><h3>Retire the manual layer</h3><p>Replace static SIGIS lists, spreadsheets, and outside consultants with one engine that re-grades itself as the rules move.</p></div>
+    </div>
+  </div>
+  <!-- manufacturer -->
+  <div class="aud-block mfr">
+    <span class="eyebrow sec-eye" style="color:var(--go)">For manufacturers</span>
+    <h2>Unlock the FSA/HSA dollars<br><span class="b mfrc">your catalog is missing.</span></h2>
+    <p class="intro">Your eligible products only sell on tax-advantaged dollars if they're recognized as eligible. Most brands leave that money on the table. dayliiIQ changes that — SKU by SKU.</p>
+    <div class="vgrid">
+      <div class="vcard"><div class="vn">Recognition</div><h3>Get certified eligible</h3><p>We classify your catalog so eligible products are recognized at checkout and on FSA/HSA marketplaces — not silently declined.</p></div>
+      <div class="vcard"><div class="vn">Whitespace</div><h3>Open untapped categories</h3><p>Period care, sun care, acne, postpartum, compression, diagnostics — categories full of eligible SKUs most brands never claim.</p></div>
+      <div class="vcard"><div class="vn">Commercials</div><h3>Pay per unlocked SKU</h3><p>You only pay for the SKUs we move into eligible. No platform fee to start — aligned to the catalog we actually open up.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- HOW IT WORKS -->
+<section class="sec how" id="how"><div class="wrap">
+  <span class="eyebrow sec-eye">How it works</span>
+  <h2>Catalog in. <span class="b">Cited eligibility out.</span></h2>
+  <p class="intro">A low-lift, file-based flow — you send the catalog, we return a determination for every SKU. No API required to get value; an optional read-only API adds live per-SKU lookups at checkout.</p>
+  <div class="steps">
+    <div class="step"><div class="num">01 · Determine</div><h3>Run the catalog</h3><p>A cited verdict per SKU — eligible, ineligible, or LMN — sets the baseline, with confidence and reasoning on every line.</p></div>
+    <div class="step"><div class="num">02 · Keep current</div><h3>Re-grade as rules move</h3><p>Continuous re-grading as IRS, CARES, FDA, and CMS guidance changes. The layer never goes stale.</p></div>
+    <div class="step"><div class="num">03 · Audit</div><h3>Export the record</h3><p>Every SKU carries a verdict, citation, confidence, and reasoning — one clean record per item, ready for an auditor.</p></div>
+  </div>
+</div></section>
+
+<!-- PROOF -->
+<section class="proof" id="proof"><div class="wrap proof-in">
+  <span class="plab">Proof point</span>
+  <h2>In a pilot with a top US pharmacy retailer, dayliiIQ found <em>money on both sides of the ledger.</em></h2>
+  <div class="pstats">
+    <div class="pstat"><div class="big">4,114</div><div class="cap">SKUs analyzed against the retailer's own eligibility tags</div></div>
+    <div class="pstat"><div class="big">44%</div><div class="cap">classified FSA/HSA-eligible across the sample</div></div>
+    <div class="pstat"><div class="big">78</div><div class="cap">discrepancies surfaced vs. the retailer's existing tags</div></div>
+  </div>
+  <p class="pnote">Of those 78: 51 eligible items were under-flagged — recoverable sales — and 27 were over-claims that carried audit risk. Every flag arrived with its citation, confidence, and reasoning attached.</p>
+</div></section>
+
+<!-- WHY -->
+<section class="sec why" id="why"><div class="wrap">
+  <span class="eyebrow sec-eye">Why dayliiIQ</span>
+  <h2>Not a list. <span class="b">A living eligibility engine.</span></h2>
+  <div class="wgrid">
+    <div class="wfeat"><h4>Cited to the rule</h4><p>Every verdict ties to IRS §213(d), the CARES Act, FDA monographs, or CMS guidance — never an opinion.</p></div>
+    <div class="wfeat"><h4>Always current</h4><p>Re-graded continuously as regulations and product data change, so the answer is right today.</p></div>
+    <div class="wfeat"><h4>Confidence + reasoning</h4><p>Not a black box: each SKU gets a confidence score and plain-English why.</p></div>
+    <div class="wfeat"><h4>Audit-ready</h4><p>One structured record per SKU — the same answer holds at the shelf, in adjudication, and in front of an auditor.</p></div>
+    <div class="wfeat"><h4>No PII</h4><p>Runs on catalog data only — never patient data — so security review stays light.</p></div>
+    <div class="wfeat"><h4>Low-lift to start</h4><p>Secure file transfer, no API required. Add a read-only lookup API only if you adjudicate live at checkout.</p></div>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="sec cta" id="demo"><div class="wrap">
+  <div class="cta-box">
+    <div>
+      <h2>See dayliiIQ run on your own catalog.</h2>
+      <p>Send us a sample and we'll return cited determinations — eligible, ineligible, LMN — for every SKU, so you can see exactly what's recoverable and what's at risk.</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn-pri" href="https://cal.com/daylii/demo">Book a demo</a>
+      <div class="em">or email <a href="mailto:hello@daylii.com">hello@daylii.com</a></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- FOOTER -->
+<footer class="ft"><div class="wrap">
+  <div class="ft-in">
+    <div>
+      <img src="assets/daylii_logo.png" width="102" height="22" alt="dayliiIQ">
+      <p class="tag">The cited, always-current eligibility engine for FSA/HSA and Medicare OTC commerce.</p>
+    </div>
+    <div class="ft-links">
+      <div class="ft-col"><h5>Product</h5><a href="#how">How it works</a><a href="#why">Why dayliiIQ</a><a href="#proof">Proof</a></div>
+      <div class="ft-col"><h5>Who it's for</h5><a href="#value">Retailers</a><a href="#value">Manufacturers</a></div>
+      <div class="ft-col"><h5>Get started</h5><a href="#demo">Book a demo</a><a href="mailto:hello@daylii.com">Contact</a></div>
+    </div>
+  </div>
+  <div class="ft-base">© <span id="yr"></span> daylii. dayliiIQ provides product-eligibility classification and is not legal or tax advice; final eligibility and reimbursement are governed by the applicable benefit plan and its administrator. Not affiliated with any retailer or manufacturer named or referenced.</div>
+</div></footer>
+
+</body>
+</html>
