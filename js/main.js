@@ -114,7 +114,7 @@
     var phrases = [
       'Determining eligibility for Flonase Allergy Relief 24HR…',
       'Flonase — Eligible · 0.98 confidence · cited to IRS §213(d).',
-      'Benefiber Fiber Powder — LMN required · cited to IRS §213(d).',
+      'Vitamin B12 — LMN required · cited to IRS §213(d).',
       'Sensodyne Pronamel — Ineligible · not medically necessary.'
     ];
     if (reduce) {
