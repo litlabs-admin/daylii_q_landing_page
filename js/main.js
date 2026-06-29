@@ -98,6 +98,47 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---- continuous float for product cards (paused offscreen) ---- */
+  var floatEls = document.querySelectorAll('.float');
+  floatEls.forEach(function (el) { el.classList.add('in'); }); // unlock card state (e.g. confidence bars)
+  if (!reduce && 'IntersectionObserver' in window) {
+    var fio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.target.classList.toggle('float-on', e.isIntersecting); });
+    }, { threshold: 0 });
+    floatEls.forEach(function (el) { fio.observe(el); });
+  }
+
+  /* ---- typewriter (hero command card) ---- */
+  var tw = document.getElementById('tw');
+  if (tw) {
+    var phrases = [
+      'Determining eligibility for Flonase Allergy Relief 24HR…',
+      'Flonase — Eligible · 0.98 confidence · cited to IRS §213(d).',
+      'Benefiber Fiber Powder — LMN required · cited to IRS §213(d).',
+      'Sensodyne Pronamel — Ineligible · not medically necessary.'
+    ];
+    if (reduce) {
+      tw.textContent = phrases[1];
+    } else {
+      var pi = 0, ci = 0, deleting = false;
+      var TYPE = 50, DELETE = 26, HOLD = 1600, GAP = 320;
+      (function tick() {
+        var full = phrases[pi];
+        if (!deleting) {
+          ci++;
+          tw.textContent = full.slice(0, ci);
+          if (ci >= full.length) { deleting = true; return setTimeout(tick, HOLD); }
+          setTimeout(tick, TYPE);
+        } else {
+          ci--;
+          tw.textContent = full.slice(0, ci);
+          if (ci <= 0) { deleting = false; pi = (pi + 1) % phrases.length; return setTimeout(tick, GAP); }
+          setTimeout(tick, DELETE);
+        }
+      })();
+    }
+  }
+
   /* ---- footer year ---- */
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
