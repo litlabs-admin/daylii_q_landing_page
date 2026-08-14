@@ -142,4 +142,18 @@
   /* ---- footer year ---- */
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
+
+  /* ---- load more articles (reveals pre-rendered, hidden cards) ---- */
+  var loadMoreBtn = document.getElementById('load-more-btn');
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', function () {
+      var list = document.getElementById(loadMoreBtn.getAttribute('data-list'));
+      var hiddenCards = list ? list.querySelectorAll('[data-more]') : [];
+      hiddenCards.forEach(function (card) {
+        card.hidden = false;
+        card.classList.add('in'); // already scrolled past the reveal threshold — show immediately
+      });
+      loadMoreBtn.hidden = true;
+    });
+  }
 })();

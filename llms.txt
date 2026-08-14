@@ -1,0 +1,7 @@
+# daylii
+
+> daylii builds dayliiIQ, the cited, always-current eligibility engine for consumer-directed spend — classifying SKUs for FSA/HSA, Medicare Advantage OTC, SNAP, and wellness programs, each verdict backed by a governing citation, a confidence score, and plain-English reasoning.
+
+- [Homepage](https://daylii.com/): product overview, how it works, and proof points for retailers and manufacturers.
+- [Articles](https://daylii.com/articles/): guidance on FSA, HSA, and consumer-directed health spending.
+- [Sitemap](https://daylii.com/sitemap.xml): full list of indexable pages.

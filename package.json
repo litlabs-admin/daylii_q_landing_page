@@ -1,0 +1,10 @@
+{
+  "name": "daylii-articles-build",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "20.x" },
+  "scripts": {
+    "build": "node scripts/build-articles.js",
+    "migrate-images": "node scripts/migrate-images.js"
+  }
+}

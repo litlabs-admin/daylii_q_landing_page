@@ -2,6 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "buildCommand": "node scripts/build-articles.js",
+  "outputDirectory": ".",
   "headers": [
     {
       "source": "/assets/fonts/(.*)",
