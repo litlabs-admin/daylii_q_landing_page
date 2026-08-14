@@ -72,21 +72,6 @@
   .see-also__list{flex-direction:column;}
 }
 
-/* ---------- CTA (dark panel, matches Blog page hero/CTA treatment) ----------
-   Self-contained like the homepage's own .cta — its own padding is the full
-   gap from whatever comes before it, no extra margin stacked on top. */
-.articles-cta{margin:0;background:#35363b;border-radius:36px;padding:64px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:48px;}
-@media(min-width:810px){
-  .articles-cta{padding:96px 24px 80px;}
-}
-.articles-cta__copy{display:flex;flex-direction:column;align-items:center;gap:16px;}
-.articles-cta__mark{display:block;width:40px;height:40px;border-radius:10px;}
-.articles-cta__copy h2{font-family:var(--body);font-weight:400;font-size:clamp(32px,5vw,64px);line-height:1.25;letter-spacing:-.04em;color:#fff;margin:0;max-width:20ch;}
-.articles-cta__copy p{font-family:var(--body);font-size:18px;line-height:1.5;color:#fff;margin:0;max-width:44ch;}
-.articles-cta__btn{display:inline-flex;align-items:center;gap:16px;background:#d9ff5c;color:#242426;font-family:var(--body);font-size:14px;font-weight:600;padding:4px 24px 4px 4px;height:64px;border-radius:16px;}
-.articles-cta__btn-chip{display:flex;align-items:center;justify-content:center;flex:none;width:56px;height:56px;border-radius:16px;background:#35363b;}
-.articles-cta__btn .ic{width:18px;height:18px;stroke-width:1.5;color:#fff;}
-
 /* ---------- load more ---------- */
 .load-more{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:40px;}
 .load-more .btn[hidden]{display:none;}

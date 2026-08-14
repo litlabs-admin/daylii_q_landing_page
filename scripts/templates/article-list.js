@@ -1,6 +1,6 @@
 import { renderLayout } from './layout.js';
 import { renderCard, toCardData } from './article-card.js';
-import { renderCta } from './cta-block.js';
+import { renderHomeCta } from './cta-block.js';
 
 const SITE = 'https://daylii.com';
 const CANONICAL = `${SITE}/articles/`;
@@ -40,7 +40,7 @@ ${cards}
   </ul>
   ${loadMoreHtml}
 </div>
-${renderCta()}`;
+${renderHomeCta()}`;
 
   const jsonLd = [{
     '@context': 'https://schema.org',
@@ -73,7 +73,7 @@ export function renderArticleListAllPage(articles) {
 ${cards}
   </ul>
 </div>
-${renderCta()}`;
+${renderHomeCta()}`;
 
   // Canonicalizes to /articles/ (not itself) — this page exists as the
   // no-JS "Load more" fallback, not a second piece of content to rank.
