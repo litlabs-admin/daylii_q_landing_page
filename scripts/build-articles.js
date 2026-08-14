@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { fetchPublishedArticles } from './lib/airtable.js';
 import { sanitizeBody } from './lib/sanitize.js';
-import { renderArticleListPage } from './templates/article-list.js';
+import { renderArticleListPage, renderArticleListAllPage, renderManifest } from './templates/article-list.js';
 import { renderArticleDetailPage } from './templates/article-detail.js';
 import { renderSitemap } from './templates/sitemap.js';
 
@@ -30,6 +30,8 @@ async function main() {
   fs.rmSync(ARTICLES_DIR, { recursive: true, force: true });
 
   write('articles/index.html', renderArticleListPage(articles));
+  write('articles/manifest.json', renderManifest(articles));
+  write('articles/all/index.html', renderArticleListAllPage(articles));
 
   for (const article of articles) {
     const sanitized = sanitizeBody(article.bodyHtml);
@@ -39,7 +41,7 @@ async function main() {
 
   write('sitemap.xml', renderSitemap(articles));
 
-  console.log(`wrote 1 list page, ${articles.length} article page(s), sitemap.xml`);
+  console.log(`wrote 1 list page, 1 manifest, 1 full-list page, ${articles.length} article page(s), sitemap.xml`);
 }
 
 main().catch(err => {

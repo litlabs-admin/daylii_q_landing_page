@@ -24,7 +24,6 @@
 /* ---------- article list / cards ---------- */
 .article-list{list-style:none;display:grid;grid-template-columns:1fr;gap:24px;}
 .article-card{display:block;}
-.article-card[hidden]{display:none;}
 .article-card__link{display:block;color:inherit;}
 .article-card__frame{background:#fff;padding:8px 8px 0;border-radius:24px 24px 0 0;}
 .article-card__thumb{display:block;aspect-ratio:4/3;overflow:hidden;border-radius:16px 16px 4px 4px;background:var(--canvas);}
@@ -83,8 +82,14 @@
 .articles-cta__btn .ic{width:18px;height:18px;stroke-width:1.5;color:#fff;}
 
 /* ---------- load more ---------- */
-.load-more{display:flex;justify-content:center;margin-top:40px;}
+.load-more{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:40px;}
 .load-more .btn[hidden]{display:none;}
+.load-more__noscript{margin-top:40px;text-align:center;}
+.load-more__noscript a{font-family:var(--body);font-weight:600;color:var(--blue);text-decoration:underline;text-underline-offset:2px;}
+
+/* Visually hidden but present for screen readers — used for the "Load more"
+   live-region status announcement (aria-live reads updates as they happen). */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 
 /* ---------- article detail ---------- */
 .article{--lime:#d9ff5c;--article-ink:#242426;--article-icon:#14142d;display:block;}

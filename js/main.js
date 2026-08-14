@@ -143,21 +143,125 @@
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
 
-  /* ---- load more articles (reveals pre-rendered, hidden cards, 3 per click) ---- */
-  var LOAD_MORE_BATCH = 3;
+  /* ---- load more articles ----
+     Initial HTML only ever contains the first 10 cards (server-rendered).
+     Everything past that lives in /articles/manifest.json (lean JSON, not
+     HTML) and gets fetched once + rendered into the DOM a batch at a time —
+     keeps the page's initial weight flat regardless of how many articles
+     exist. buildCardEl() below must stay in sync with the markup produced
+     by renderCard() in scripts/templates/article-card.js. */
+  function buildCardEl(article, index) {
+    var li = document.createElement('li');
+    li.className = 'article-card reveal';
+    li.style.setProperty('--ty', '120px');
+    li.style.setProperty('--d', (index % 3) * 0.08 + 's');
+
+    var a = document.createElement('a');
+    a.className = 'article-card__link';
+    a.href = '/articles/' + article.slug + '/';
+
+    var frame = document.createElement('div');
+    frame.className = 'article-card__frame';
+    var thumb = document.createElement('div');
+    thumb.className = 'article-card__thumb';
+    if (article.featuredImage) {
+      var img = document.createElement('img');
+      img.src = article.featuredImage;
+      img.alt = '';
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      thumb.appendChild(img);
+    }
+    frame.appendChild(thumb);
+
+    var body = document.createElement('div');
+    body.className = 'article-card__body';
+
+    var meta = document.createElement('div');
+    meta.className = 'article-card__meta';
+    if (article.category) {
+      var tag = document.createElement('span');
+      tag.className = 'article-card__tag';
+      tag.textContent = article.category;
+      meta.appendChild(tag);
+    }
+    var time = document.createElement('time');
+    time.setAttribute('datetime', article.publishedDate);
+    time.textContent = new Date(article.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    meta.appendChild(time);
+
+    var h2 = document.createElement('h2');
+    h2.className = 'article-card__title';
+    h2.textContent = article.title;
+
+    var footer = document.createElement('div');
+    footer.className = 'article-card__footer';
+    var read = document.createElement('span');
+    read.className = 'article-card__read';
+    read.textContent = 'Read article';
+    var arrow = document.createElement('span');
+    arrow.className = 'article-card__arrow';
+    arrow.innerHTML = '<svg class="ic"><use href="#i-arrow"></use></svg>';
+    footer.appendChild(read);
+    footer.appendChild(arrow);
+
+    body.appendChild(meta);
+    body.appendChild(h2);
+    body.appendChild(footer);
+    a.appendChild(frame);
+    a.appendChild(body);
+    li.appendChild(a);
+    return li;
+  }
+
   var loadMoreBtn = document.getElementById('load-more-btn');
   if (loadMoreBtn) {
-    loadMoreBtn.addEventListener('click', function () {
-      var list = document.getElementById(loadMoreBtn.getAttribute('data-list'));
-      // [data-more][hidden] re-evaluates fresh each click — cards already
-      // revealed lose the `hidden` attribute (via the .hidden property) and
-      // drop out of this match, so the count here is always what's left.
-      var stillHidden = list ? list.querySelectorAll('[data-more][hidden]') : [];
-      for (var i = 0; i < stillHidden.length && i < LOAD_MORE_BATCH; i++) {
-        stillHidden[i].hidden = false;
-        stillHidden[i].classList.add('in'); // already scrolled past the reveal threshold — show immediately
+    var manifestUrl = loadMoreBtn.getAttribute('data-manifest');
+    var listEl = document.getElementById(loadMoreBtn.getAttribute('data-list'));
+    var batchSize = parseInt(loadMoreBtn.getAttribute('data-batch'), 10) || 3;
+    var shown = parseInt(loadMoreBtn.getAttribute('data-shown'), 10) || 0;
+    var statusEl = document.getElementById('load-more-status');
+    var manifest = null; // fetched once, cached for subsequent clicks
+
+    function announce(msg) { if (statusEl) statusEl.textContent = msg; }
+
+    function loadBatch() {
+      var batch = manifest.slice(shown, shown + batchSize);
+      var frag = document.createDocumentFragment();
+      batch.forEach(function (article, i) { frag.appendChild(buildCardEl(article, shown + i)); });
+      listEl.appendChild(frag);
+      // two rAFs so the browser paints the .reveal starting state before
+      // switching to .in — otherwise the transition has nothing to animate from.
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          listEl.querySelectorAll('.article-card.reveal:not(.in)').forEach(function (c) { c.classList.add('in'); });
+        });
+      });
+      shown += batch.length;
+      var remaining = manifest.length - shown;
+      if (remaining <= 0) {
+        loadMoreBtn.hidden = true;
+        announce('All ' + manifest.length + ' articles loaded.');
+      } else {
+        announce(batch.length + ' more article' + (batch.length === 1 ? '' : 's') + ' loaded, ' + remaining + ' remaining.');
       }
-      if (stillHidden.length <= LOAD_MORE_BATCH) loadMoreBtn.hidden = true;
+    }
+
+    loadMoreBtn.addEventListener('click', function () {
+      if (manifest) { loadBatch(); return; }
+      loadMoreBtn.disabled = true;
+      announce('Loading more articles…');
+      fetch(manifestUrl)
+        .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+        .then(function (data) {
+          manifest = data;
+          loadMoreBtn.disabled = false;
+          loadBatch();
+        })
+        .catch(function () {
+          loadMoreBtn.disabled = false;
+          announce('Could not load more articles — please try again.');
+        });
     });
   }
 })();
