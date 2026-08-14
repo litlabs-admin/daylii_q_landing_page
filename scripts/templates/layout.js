@@ -52,7 +52,6 @@ ${jsonLdTags}
   <nav class="nav-links" aria-label="Primary">
     <a href="/#value">Who it's for</a>
     <a href="/#how">How it works</a>
-    <a href="/articles/">Articles</a>
     <a class="btn btn-ghost" href="https://calendly.com/nick-godaylii/30min" target="_blank" rel="noopener">Book a demo <svg class="ic"><use href="#i-arrow"/></svg></a>
   </nav>
 </div></header>
