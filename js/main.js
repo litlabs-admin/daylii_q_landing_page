@@ -143,17 +143,21 @@
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
 
-  /* ---- load more articles (reveals pre-rendered, hidden cards) ---- */
+  /* ---- load more articles (reveals pre-rendered, hidden cards, 3 per click) ---- */
+  var LOAD_MORE_BATCH = 3;
   var loadMoreBtn = document.getElementById('load-more-btn');
   if (loadMoreBtn) {
     loadMoreBtn.addEventListener('click', function () {
       var list = document.getElementById(loadMoreBtn.getAttribute('data-list'));
-      var hiddenCards = list ? list.querySelectorAll('[data-more]') : [];
-      hiddenCards.forEach(function (card) {
-        card.hidden = false;
-        card.classList.add('in'); // already scrolled past the reveal threshold — show immediately
-      });
-      loadMoreBtn.hidden = true;
+      // [data-more][hidden] re-evaluates fresh each click — cards already
+      // revealed lose the `hidden` attribute (via the .hidden property) and
+      // drop out of this match, so the count here is always what's left.
+      var stillHidden = list ? list.querySelectorAll('[data-more][hidden]') : [];
+      for (var i = 0; i < stillHidden.length && i < LOAD_MORE_BATCH; i++) {
+        stillHidden[i].hidden = false;
+        stillHidden[i].classList.add('in'); // already scrolled past the reveal threshold — show immediately
+      }
+      if (stillHidden.length <= LOAD_MORE_BATCH) loadMoreBtn.hidden = true;
     });
   }
 })();
