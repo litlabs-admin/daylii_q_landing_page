@@ -24,6 +24,7 @@
 /* ---------- article list / cards ---------- */
 .article-list{list-style:none;display:grid;grid-template-columns:1fr;gap:24px;}
 .article-card{display:block;}
+.article-card[hidden]{display:none;}
 .article-card__link{display:block;color:inherit;}
 .article-card__frame{background:#fff;padding:8px 8px 0;border-radius:24px 24px 0 0;}
 .article-card__thumb{display:block;aspect-ratio:4/3;overflow:hidden;border-radius:16px 16px 4px 4px;background:var(--canvas);}
