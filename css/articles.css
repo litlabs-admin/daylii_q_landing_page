@@ -72,6 +72,11 @@
   .see-also__list{flex-direction:column;}
 }
 
+/* Homepage's .cta has a border-top as part of a divider rhythm shared with
+   other homepage sections (.val/.how/.why) — that pattern doesn't exist on
+   the articles pages, so drop it there to avoid a stray line. */
+.cta--flat{border-top:none;}
+
 /* ---------- load more ---------- */
 .load-more{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:40px;}
 .load-more .btn[hidden]{display:none;}

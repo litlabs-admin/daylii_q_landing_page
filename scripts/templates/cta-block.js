@@ -5,7 +5,7 @@ const DEMO_URL = 'https://calendly.com/nick-godaylii/30min';
 // article pages instead of the dark panel above, for consistency with the
 // rest of the site.
 export function renderHomeCta() {
-  return `<section class="cta"><div class="wrap">
+  return `<section class="cta cta--flat"><div class="wrap">
   <div class="cta-inner reveal">
     <span class="eyebrow" style="justify-content:center;margin-bottom:20px;display:inline-flex;width:100%;"><span class="eyebrow-dot"></span>Get started</span>
     <h2>See dayliiIQ run on your own catalog.</h2>
