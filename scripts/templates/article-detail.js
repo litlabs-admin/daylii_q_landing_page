@@ -1,6 +1,6 @@
 import { renderLayout } from './layout.js';
 import { renderCard } from './article-card.js';
-import { renderCta } from './cta-block.js';
+import { renderHomeCta } from './cta-block.js';
 import { extractFaqJsonLd } from './faq-block.js';
 import { escapeHtml, escapeAttr, formatDate, truncate } from '../lib/render.js';
 
@@ -69,7 +69,7 @@ ${sanitized.html}
   </div>
 </article>
 ${seeAlsoHtml}
-${renderCta()}`;
+${renderHomeCta()}`;
 
   const jsonLd = [
     {
