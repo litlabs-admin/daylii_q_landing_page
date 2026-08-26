@@ -6,6 +6,8 @@
   "scripts": {
     "build": "node scripts/build-articles.js && node scripts/verify-seo.mjs",
     "generate-redirects": "node --env-file=.env scripts/generate-redirects.js",
+    "audit-migration": "node scripts/audit-migration.mjs",
+    "audit-source": "node --env-file=.env scripts/audit-source.mjs",
     "migrate-images": "node scripts/migrate-images.js"
   }
 }

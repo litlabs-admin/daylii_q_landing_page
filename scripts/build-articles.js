@@ -9,6 +9,7 @@ import { renderArticleListPage, renderArticleListAllPage, renderManifest } from 
 import { renderArticleDetailPage } from './templates/article-detail.js';
 import { renderSitemap } from './templates/sitemap.js';
 import { SITE_URL } from './lib/site.js';
+import { materializeArticleImages } from './lib/article-images.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
@@ -27,6 +28,12 @@ async function main() {
     table: process.env.AIRTABLE_TABLE_NAME,
   });
   console.log(`fetched ${articles.length} published article(s) from Airtable`);
+
+  await materializeArticleImages({
+    articles,
+    assetDir: path.join(REPO_ROOT, 'assets', 'articles'),
+    preferRemote: process.env.ARTICLE_IMAGE_SOURCE === 'airtable',
+  });
 
   fs.rmSync(ARTICLES_DIR, { recursive: true, force: true });
 

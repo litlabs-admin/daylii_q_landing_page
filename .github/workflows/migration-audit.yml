@@ -1,0 +1,27 @@
+name: Migration audit
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 5 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Verify public migration
+        run: node scripts/audit-migration.mjs --output migration-audit-report.json
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: migration-audit-report
+          path: migration-audit-report.json
+          if-no-files-found: ignore

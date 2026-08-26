@@ -51,6 +51,20 @@ for (const loc of sitemapUrls) {
   if (!loc.startsWith(`${SITE_URL}/`)) failures.push(`sitemap contains non-iq URL: ${loc}`);
 }
 
+const publicArticleFiles = [];
+function collectFiles(dir) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) collectFiles(full);
+    else publicArticleFiles.push(full);
+  }
+}
+collectFiles(articlesDir);
+publicArticleFiles.push(path.join(root, 'articles', 'manifest.json'));
+for (const file of publicArticleFiles) {
+  if (/airtableusercontent\.com/i.test(read(file))) failures.push(`${path.relative(root, file)} exposes an expiring Airtable attachment URL`);
+}
+
 if (failures.length) {
   console.error('SEO verification failed:\n' + failures.map(f => `- ${f}`).join('\n'));
   process.exit(1);

@@ -27,7 +27,10 @@ pre-rendered for SEO/AEO while still being editable without a code deploy.
 ├── llms.txt                  # hand-written, static
 ├── robots.txt
 ├── vercel.json               # cleanUrls + long-cache headers + build command
-└── design-source/            # original client handoff (HTML source of truth + Framer spec)
+├── redirects.csv              # generated legacy → iq redirect rules
+├── docs/airtable-publish-automation.md
+└── .github/workflows/         # daily public migration audit
+└── design-source/             # original client handoff (HTML source of truth + Framer spec)
 ```
 
 ## Run locally
@@ -47,15 +50,33 @@ and fill in `AIRTABLE_PAT`/`AIRTABLE_BASE_ID`/`AIRTABLE_TABLE_NAME`), then:
 node --env-file=.env scripts/build-articles.js
 node scripts/verify-seo.mjs
 npm run generate-redirects  # regenerates redirects.csv from published Airtable records
+npm run audit-source        # read-only WordPress ↔ Airtable drift report
+npm run audit-migration     # live redirect, canonical, robots, and sitemap audit
 ```
 
 ## Deploy to Vercel
 
 This repo is a static site at the root — Vercel needs no framework preset and no
-Root Directory change. `vercel.json` runs `npm run build`, so Vercel regenerates
+Root Directory change. `vercel.json` runs `ARTICLE_IMAGE_SOURCE=airtable npm run build`, so Vercel regenerates
 the articles section and blocks deployment if SEO verification fails. Set `AIRTABLE_PAT`,
 `AIRTABLE_BASE_ID`, and `AIRTABLE_TABLE_NAME` as Project Environment Variables first
 (Project Settings → Environment Variables).
+
+At production build time, Airtable attachment images are copied to hashed files
+under `/assets/articles/generated/`. This avoids publishing Airtable's expiring
+attachment URLs while keeping the immutable image cache safe after replacements.
+
+## Ongoing migration checks
+
+The GitHub Actions workflow runs the public migration audit daily and can also
+be started manually from the Actions tab. It checks every row in `redirects.csv`
+for a direct `301` to its exact iq URL, then checks all sitemap pages for a 200,
+self-canonical URL, and no `noindex` directive. It expects 250 redirect rules;
+until the remaining source articles are present in Airtable and the CSV is
+regenerated, it fails visibly instead of giving a misleading green result.
+
+See [Airtable publishing automation](docs/airtable-publish-automation.md) for
+the one-time Vercel deploy-hook setup that is outside this repository.
 
 ```bash
 npm i -g vercel

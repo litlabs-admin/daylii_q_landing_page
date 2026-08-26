@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": true,
-  "buildCommand": "npm run build",
+  "buildCommand": "ARTICLE_IMAGE_SOURCE=airtable npm run build",
   "outputDirectory": ".",
   "headers": [
     {
