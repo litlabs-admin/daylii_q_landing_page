@@ -3,8 +3,9 @@ import { renderCard } from './article-card.js';
 import { renderHomeCta } from './cta-block.js';
 import { extractFaqJsonLd } from './faq-block.js';
 import { escapeHtml, escapeAttr, formatDate, truncate } from '../lib/render.js';
+import { SITE_URL } from '../lib/site.js';
 
-const SITE = 'https://daylii.com';
+const SITE = SITE_URL;
 const RELATED_COUNT = 3;
 
 export function renderArticleDetailPage(article, sanitized, allArticles) {

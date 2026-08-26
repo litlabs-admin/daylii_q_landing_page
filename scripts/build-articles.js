@@ -8,6 +8,7 @@ import { sanitizeBody } from './lib/sanitize.js';
 import { renderArticleListPage, renderArticleListAllPage, renderManifest } from './templates/article-list.js';
 import { renderArticleDetailPage } from './templates/article-detail.js';
 import { renderSitemap } from './templates/sitemap.js';
+import { SITE_URL } from './lib/site.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
@@ -40,6 +41,7 @@ async function main() {
   }
 
   write('sitemap.xml', renderSitemap(articles));
+  write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 
   console.log(`wrote 1 list page, 1 manifest, 1 full-list page, ${articles.length} article page(s), sitemap.xml`);
 }

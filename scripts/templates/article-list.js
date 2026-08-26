@@ -1,8 +1,9 @@
 import { renderLayout } from './layout.js';
 import { renderCard, toCardData } from './article-card.js';
 import { renderHomeCta } from './cta-block.js';
+import { SITE_URL } from '../lib/site.js';
 
-const SITE = 'https://daylii.com';
+const SITE = SITE_URL;
 const CANONICAL = `${SITE}/articles/`;
 const LIST_DESCRIPTION = 'Practical guidance on FSA, HSA, and consumer-directed health spending from the daylii team.';
 
@@ -66,6 +67,7 @@ export function renderManifest(articles) {
 export function renderArticleListAllPage(articles) {
   const title = 'All Articles | daylii';
   const cards = articles.map((article, i) => renderCard(article, i)).join('\n');
+  const canonical = `${SITE}/articles/all/`;
 
   const bodyHtml = `<div class="wrap articles">
   ${introHtml()}
@@ -75,7 +77,5 @@ ${cards}
 </div>
 ${renderHomeCta()}`;
 
-  // Canonicalizes to /articles/ (not itself) — this page exists as the
-  // no-JS "Load more" fallback, not a second piece of content to rank.
-  return renderLayout({ title, description: LIST_DESCRIPTION, canonical: CANONICAL, bodyHtml });
+  return renderLayout({ title, description: LIST_DESCRIPTION, canonical, bodyHtml });
 }

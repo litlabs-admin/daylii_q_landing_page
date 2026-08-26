@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://daylii.com/sitemap.xml
+Sitemap: https://iq.godaylii.com/sitemap.xml

@@ -1,6 +1,7 @@
 import { escapeHtml, escapeAttr } from '../lib/render.js';
+import { SITE_URL } from '../lib/site.js';
 
-const DEFAULT_OG_IMAGE = 'https://daylii.com/assets/daylii_logo.png';
+const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/daylii_logo.png`;
 
 // Nav/footer chrome ported once from index.html — mirror manually if that file's
 // chrome markup changes, since index.html itself isn't run through this generator.
@@ -18,6 +19,7 @@ export function renderLayout({ title, description, canonical, ogImage, jsonLd = 
 <title>${escapeHtml(title)}</title>
 <meta name="description" content="${escapeAttr(description)}">
 <link rel="canonical" href="${canonical}">
+<meta name="robots" content="index,follow">
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="${escapeAttr(title)}">
