@@ -4,7 +4,8 @@
   "type": "module",
   "engines": { "node": "20.x" },
   "scripts": {
-    "build": "node scripts/build-articles.js",
+    "build": "node scripts/build-articles.js && node scripts/verify-seo.mjs",
+    "generate-redirects": "node --env-file=.env scripts/generate-redirects.js",
     "migrate-images": "node scripts/migrate-images.js"
   }
 }

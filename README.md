@@ -40,18 +40,20 @@ python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
-Articles section — needs Airtable env vars (copy `.env.example` to `.env.local`
+Articles section — needs Airtable env vars (copy `.env.example` to `.env`
 and fill in `AIRTABLE_PAT`/`AIRTABLE_BASE_ID`/`AIRTABLE_TABLE_NAME`), then:
 
 ```bash
-npm run build   # regenerates /articles and sitemap.xml from Airtable
+node --env-file=.env scripts/build-articles.js
+node scripts/verify-seo.mjs
+npm run generate-redirects  # regenerates redirects.csv from published Airtable records
 ```
 
 ## Deploy to Vercel
 
 This repo is a static site at the root — Vercel needs no framework preset and no
-Root Directory change. `vercel.json` sets `buildCommand: node scripts/build-articles.js`,
-so Vercel regenerates the articles section on every deploy. Set `AIRTABLE_PAT`,
+Root Directory change. `vercel.json` runs `npm run build`, so Vercel regenerates
+the articles section and blocks deployment if SEO verification fails. Set `AIRTABLE_PAT`,
 `AIRTABLE_BASE_ID`, and `AIRTABLE_TABLE_NAME` as Project Environment Variables first
 (Project Settings → Environment Variables).
 
@@ -65,6 +67,6 @@ vercel --prod     # production
 
 1. **Book a demo** link → real booking URL (currently `https://cal.com/daylii/demo`).
 2. **Email** → real inbox (currently `hello@daylii.com`).
-3. **Canonical / OG / robots URLs** → set to the real production domain (currently `daylii.com`).
+3. **Redirect ownership** → `redirects.csv` must be installed on the system serving the old `godaylii.com` domain; this repository controls only `iq.godaylii.com`.
 4. **Proof stats** are real anonymized pilot numbers — confirm you're comfortable publishing them.
 5. No lead-capture form is included (button + email only). Add a form wired to your CRM if you want capture.
